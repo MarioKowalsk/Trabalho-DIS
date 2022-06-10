@@ -12,7 +12,7 @@ sinal = "g-30x30-2.csv"
 def CGNE():
     start_time = time.time()
 
-    H = pd.read_csv(modelo, dtype=np.float32, header=None)
+    H = np.load("H-2.npy")
     n = 64
     if len(H) > 40000:
         s = 794
@@ -65,8 +65,6 @@ def CGNR():
         s = 436
         length = 30
     g = ganhoSinal(s, n)
-    #g = pd.DataFrame.to_numpy(pd.read_csv('G-1.csv', dtype=np.float32, header=None))
-    #g = np.reshape(g, (50816,))
 
     print("Levou %s segundos" % (time.time() - start_time))
     start_time = time.time()
@@ -115,4 +113,3 @@ def ganhoSinal(s, n):
 
 if __name__== "__main__":
     CGNE()
-    CGNR()
