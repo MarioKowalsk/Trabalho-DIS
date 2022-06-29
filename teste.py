@@ -7,12 +7,12 @@ import cv2
 import math
 
 modelo = "H-2.csv"
-sinal = "g-30x30-2.csv"
+sinal = "G-1.csv"
 
 def CGNE():
     start_time = time.time()
 
-    H = np.load("H-2.npy")
+    H = np.load("H.npy")
     n = 64
     if len(H) > 40000:
         s = 794
@@ -109,6 +109,8 @@ def ganhoSinal(s, n):
             g[i,j] = g[i,j] * gamma
     size = n*s
     g = np.reshape(g, (size, ))
+
+    np.savetxt("./signals/teste.txt", g)
     return g
 
 if __name__== "__main__":
